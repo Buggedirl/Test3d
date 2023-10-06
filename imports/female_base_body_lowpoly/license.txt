@@ -1,0 +1,11 @@
+Model Information:
+* title:	Female Base Body Lowpoly
+* source:	https://sketchfab.com/3d-models/female-base-body-lowpoly-71e1983d0549459d82acbc847a140974
+* author:	vukhiemton (https://sketchfab.com/vukhiemton)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Female Base Body Lowpoly" (https://sketchfab.com/3d-models/female-base-body-lowpoly-71e1983d0549459d82acbc847a140974) by vukhiemton (https://sketchfab.com/vukhiemton) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

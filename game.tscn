@@ -1,0 +1,62 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/MainCharacter.tscn" type="PackedScene" id=1]
+
+[sub_resource type="BoxShape" id=6]
+
+[sub_resource type="CubeMesh" id=7]
+
+[sub_resource type="GDScript" id=5]
+resource_name = "res://Scripts/Silly.gd"
+script/source = "extends KinematicBody
+
+export var SPEED = 10
+
+func _ready():
+ pass
+ 
+func _physics_process(delta):
+ var  velocity = Vector3(0,0,0)
+ if Input.is_action_pressed(\"ui_right\"):
+  velocity.x += 1
+ if Input.is_action_pressed(\"ui_left\"):
+  velocity.x -= 1
+ if Input.is_action_pressed(\"ui_down\"):
+  velocity.z += 1
+ if Input.is_action_pressed(\"ui_up\"):
+  velocity.z -= 1
+  
+ if velocity.length() > 0:
+  velocity = velocity.normalized() * SPEED
+ move_and_slide(velocity)
+"
+
+[node name="Level" type="Spatial"]
+
+[node name="StaticBody" type="StaticBody" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
+shape = SubResource( 6 )
+
+[node name="MeshInstance" type="MeshInstance" parent="StaticBody/CollisionShape"]
+transform = Transform( 30, 0, 0, 0, 1, 0, 0, 0, 30, 0, 0, 0 )
+mesh = SubResource( 7 )
+
+[node name="Silly" parent="." instance=ExtResource( 1 )]
+transform = Transform( 2.74691, 0, 0, 0, 2.16, 0, 0, 0, 2.7, 0, 2.61143, 0 )
+script = SubResource( 5 )
+
+[node name="Spatial" type="Spatial" parent="Silly"]
+transform = Transform( 1, 0, 0, 0, 0.908499, 0.522353, 0, -0.334306, 0.908499, 0, 6.21043, 4.99853 )
+
+[node name="InterpolatedCamera" type="InterpolatedCamera" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.07993, 27.3575 )
+target = NodePath("../Silly/Spatial")
+enabled = true
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 1, 0, 0, 0, -0.0848778, 0.996391, 0, -0.996391, -0.0848778, 0, 46.326, 0 )
+light_color = Color( 0.945098, 0.52549, 0.52549, 1 )
+light_energy = 0.706
+shadow_enabled = true
+shadow_color = Color( 0.262745, 0.105882, 0.827451, 1 )
